@@ -1,0 +1,58 @@
+<html>
+
+<script src="src/Combinator.js"></script>
+
+<body>
+    <p>Combinator demo</p>
+    <button onclick="buttonClicked();"> <p>Generate combination</p> </button>
+    <c> ←  click!</c>
+</body>
+
+
+<script>
+/*
+    DEMO STARTS HERE
+*/
+
+//Combinator init
+var aCombinator = new Combinator();
+
+//Field lists to combine
+names = ["bird", "cat", "dog","mouse"]
+adjs = ["strong", "tinny", "cool"]
+colors = ["red","cyan","magenta","orange"];
+
+
+//Load field lists to combinaor
+aCombinator.addField("name",names);
+aCombinator.addField("adj",adjs);
+aCombinator.addField("color",colors);
+
+//Set default, if almost every combination taken (too many collisions produced)
+//If not set, it will be null
+aCombinator.setDefault({color:"grey",name:"Hackerman", adj:"super"})
+
+
+function buttonClicked(){
+    // Get combination
+    var comb = aCombinator.getCombination();
+
+    var divComb = document.querySelector("c");
+    divComb.innerText = comb.adj +' '+ comb.name;
+    divComb.style.color = comb.color;
+}
+
+/*
+    DEMO ENDS HERE
+*/
+
+</script>
+
+
+<style>
+body{background-color: #1e1f1e; text-align: center;}
+button {border:none;background-color:#248a52;border-radius:5px;padding:10px; display: block; margin: auto;}
+p {color:white;font-family: verdana, sans-serif;}
+c {padding: 20px; font-size: 20px;display: block;font-family: verdana, sans-serif;font-variant: small-caps;color: white;}
+</style>
+</html>
